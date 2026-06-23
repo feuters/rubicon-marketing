@@ -5,6 +5,20 @@ const mintlifySubdomain = process.env.MINTLIFY_SUBDOMAIN?.trim();
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname),
+  webpack(config) {
+    const aliases = config.resolve?.alias;
+
+    config.resolve = config.resolve ?? {};
+    config.resolve.alias = {
+      ...(aliases && !Array.isArray(aliases) ? aliases : {}),
+      // Privy declares these integrations as optional peers. They are not used by
+      // Rubicon, so keep Next's dev overlay from treating them as missing modules.
+      "@farcaster/mini-app-solana": false,
+      "@stripe/crypto": false,
+    };
+
+    return config;
+  },
   async redirects() {
     if (process.env.NODE_ENV !== "development" || mintlifySubdomain) return [];
     return [

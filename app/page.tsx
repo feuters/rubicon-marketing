@@ -180,26 +180,26 @@ function AgentSkillSetup() {
 
 function Navigation() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--faint)] bg-[rgba(21,21,23,0.92)] backdrop-blur-md">
-      <nav className="container flex h-16 items-center justify-between gap-6" aria-label="Main navigation">
-        <div className="flex min-w-0 items-center gap-8">
-          <Link href="/" className="flex shrink-0 items-center" aria-label="Rubicon home">
-            <RubiconBrand className="h-8" />
-          </Link>
-          <div className="hidden items-center gap-7 text-sm text-[var(--muted)] lg:flex">
-            <a className="site-nav-link" href="#product">Product</a>
-            <a className="site-nav-link" href="#agents">Agents</a>
-            <a className="site-nav-link" href="#creators">Creators</a>
-            <Link className="site-nav-link" href="/docs">Docs</Link>
-          </div>
+    <header className="landing-header">
+      <nav className="container landing-nav" aria-label="Main navigation">
+        <Link href="/" className="landing-brand" aria-label="Rubicon home">
+          <RubiconBrand className="h-7" />
+        </Link>
+
+        <div className="landing-nav-links">
+          <a href="#product">Product</a>
+          <a href="#agents">Agents</a>
+          <a href="#creators">Creators</a>
+          <Link href="/docs">Docs</Link>
         </div>
-        <div className="flex items-center gap-3">
-          <Link href="/dashboard" className="button button-primary button-nav hidden text-sm sm:inline-flex">
-            Start publishing <ArrowRight size={15} aria-hidden="true" />
+
+        <div className="landing-nav-actions">
+          <Link href="/dashboard" className="landing-login">
+            Log in
           </Link>
-          <a href="/explore" className="explore-pill text-sm">
-            Explore <ArrowRight size={15} aria-hidden="true" />
-          </a>
+          <Link href="/dashboard" className="landing-signup">
+            Sign up <ArrowRight size={14} aria-hidden="true" />
+          </Link>
         </div>
       </nav>
     </header>
